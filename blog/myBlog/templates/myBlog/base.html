@@ -1,0 +1,32 @@
+{% extends 'base_blog.html'%}
+
+{% block title %}
+	My blog
+{% endblock %}
+
+{% block content %}
+	Content
+{% endblock %}
+
+{% block admin-panel %}
+
+{% if request.user.is_authenticated and request.user.is_staff %}
+
+	<div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Create
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="{% url 'post_create' %}">Post</a>
+    <a class="dropdown-item" href="{% url 'tag_create' %}">Tag</a>
+  </div>
+</div>
+
+
+	{% if detail %}
+		<a href="{{ admin_object.get_update_url }}" class="btn btn-light"">Update</a>
+		<a href="{{ admin_object.get_delete_url }}" class="btn btn-danger">Delete</a>
+	{% endif %}
+{% endif %}
+	
+{% endblock %}

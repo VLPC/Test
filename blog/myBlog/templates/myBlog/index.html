@@ -1,0 +1,17 @@
+{% extends 'myBlog/base.html' %}
+
+{% block title %}
+	{{ block.super }}
+{% endblock %}
+
+{% block content %}
+	<h1 class="mb-5">Posts:</h1>
+	{% for post in page.object_list %}
+
+		{% include 'myBlog/includes/post_card_template.html' %}
+
+	{% endfor %}
+
+	{% include 'myBlog/includes/paginator.html' %}
+
+{% endblock %}
